@@ -1,4 +1,4 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 /* const options = {
     method: 'GET',
@@ -7,28 +7,38 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
       'X-RapidAPI-Host': 'shazam-core.p.rapidapi.com'
     }
   }; */
-  
- /*  fetch('https://shazam-core.p.rapidapi.com/v1/charts/world', options)
+
+/*  fetch('https://shazam-core.p.rapidapi.com/v1/charts/world', options)
     .then(response => response.json())
     .then(response => console.log(response))
     .catch(err => console.error(err)); */
 
 export const shazamCoreApi = createApi({
-    reducerPath: 'shazamCoreApi',
-    baseQuery: fetchBaseQuery({
-        baseUrl: 'https://shazam-core.p.rapidapi.com/v1',
-        prepareHeaders: (headers) => {
-            headers.set('X-RapidAPI-Key', '755ea67ddfmshed6d8cc78903027p1f00e8jsnff99a83b646d');
+	reducerPath: "shazamCoreApi",
+	baseQuery: fetchBaseQuery({
+		baseUrl: "https://shazam-core.p.rapidapi.com/v1",
+		prepareHeaders: (headers) => {
+			headers.set(
+				"X-RapidAPI-Key",
+				"755ea67ddfmshed6d8cc78903027p1f00e8jsnff99a83b646d",
+			);
 
-            return headers;
-        }
-        
-        }),
-        endpoints: (builder) => ({
-            getTopCharts: builder.query({query: () => '/charts/world'}),
-    }),
+			return headers;
+		},
+	}),
+	endpoints: (builder) => ({
+		getTopCharts: builder.query({ query: () => "/charts/world" }),
+		getSongDetails: builder.query({
+			query: ({ songid }) => `/tracks/details?track_id=${songid}`,
+		}),
+		getSongRelated: builder.query({
+			query: ({ songid }) => `/tracks/related?track_id=${songid}`,
+		}),
+	}),
 });
 
 export const {
-    useGetTopChartsQuery,
-} = shazamCoreApi
+	useGetTopChartsQuery,
+	useGetSongDetailsQuery,
+	useGetSongRelatedQuery,
+} = shazamCoreApi;

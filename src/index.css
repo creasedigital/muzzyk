@@ -41,3 +41,35 @@
 	-ms-overflow-style: none; /* IE and Edge */
 	scrollbar-width: none; /* Firefox */
 }
+
+input[type="range"]::-webkit-slider-thumb {
+	width: 4px !important;
+	-webkit-appearance: none;
+	appearance: none;
+	height: 4px !important;
+	cursor: pointer;
+	background: #3e56af;
+	/*box-shadow: -405px 0 0 400px #605e5c;*/
+	border-radius: 50%;
+}
+
+input[type="range"]::-moz-range-thumb {
+	width: 16px !important;
+	appearance: none;
+	height: 16px !important;
+	cursor: pointer;
+	background: #3e56af;
+	/*box-shadow: -405px 0 0 400px #605e5c;*/
+	border-radius: 50%;
+}
+
+input[type="range"]::-ms-thumb {
+	width: 4px !important;
+	-webkit-appearance: none;
+	appearance: none;
+	height: 4px !important;
+	cursor: pointer;
+	background: #3e56af;
+	/*box-shadow: -405px 0 0 400px #605e5c;*/
+	border-radius: 50%;
+}

@@ -4,8 +4,16 @@ import { useDispatch } from "react-redux";
 import PlayPause from "./PlayPause";
 import { playPause, setActiveSong } from "../redux/features/playerSlice";
 
-const SongCard = ({ song, i }) => {
-	const activeSong = "Test";
+const SongCard = ({ song, i, isPlaying, activeSong, data }) => {
+	const dispatch = useDispatch();
+	const handlePauseClick = () => {
+		dispatch(playPause(false));
+	};
+
+	const handlePlayClick = () => {
+		dispatch(setActiveSong({ song, data, i }));
+		dispatch(playPause(true));
+	};
 
 	return (
 		<div className="w-[250px] p-4 bg-white/5 bg-opacity-80 flex flex-col backdrop-blur-sm animate-slideup rounded-xl cursor-pointer">
@@ -17,7 +25,13 @@ const SongCard = ({ song, i }) => {
 							: "hidden"
 					}`}
 				>
-					<PlayPause />
+					<PlayPause
+						song={song}
+						handlePause={handlePauseClick}
+						handlePlay={handlePlayClick}
+						isPlaying={isPlaying}
+						activeSong={activeSong}
+					/>
 				</div>
 				<img alt="song_img" src={song.images?.coverart} />
 			</div>
