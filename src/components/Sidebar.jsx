@@ -10,7 +10,7 @@ const NavLinks = ({ handleClick }) => (
 		{links.map((lnk) => (
 			<NavLink
 				key={lnk.name}
-				className="flex flex-row justify-start items-center my-8 text-sm font-medium text-[gold] hover:text-lime-200"
+				className="flex flex-row justify-start items-center my-8 text-sm font-medium text-white hover:text-gray-200"
 				to={lnk.to}
 				onClick={() => handleClick && handleClick()}
 			>
@@ -47,7 +47,7 @@ const Sidebar = () => {
 				)}
 			</div>
 			<div
-				className={`absolute top-0 h-screen bg-gradient-to-tr from-white/10 to-lime-800 backdrop-blur-lg
+				className={`absolute top-0 h-screen bg-gradient-to-tr from-black/50 to-slate-900 backdrop-blur-lg
       z-10 p-6 md:hidden smooth-transition ${
 			mobileMenuOpen ? "left-0" : "-left-full"
 		}`}

@@ -28,8 +28,9 @@ const SongDetails = () => {
 		isFetching: isFetchingSongDetails,
 	} = useGetSongDetailsQuery({ songid });
 
-	const { data: relatedSongData, isFetching: isFetchingRelatedSongs } =
-		useGetSongRelatedQuery({ songId });
+	const { data, isFetching: isFetchingRelatedSongs } = useGetSongRelatedQuery(
+		{ songid },
+	);
 
 	if (isFetchingRelatedSongs || isFetchingSongDetails)
 		return <Loader title="loading song details" />;
@@ -57,7 +58,7 @@ const SongDetails = () => {
 			</div>
 
 			<RelatedSongs
-				data={relatedSongData}
+				data={data}
 				isPlaying={isPlaying}
 				activeSong={activeSong}
 				handlePlayClick={handlePlayClick}
